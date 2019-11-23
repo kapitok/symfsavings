@@ -17,8 +17,23 @@
             "config/packages/broadway.yaml"
         ]
     },
+    "broadway/event-store-mongodb": {
+        "version": "0.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.2",
+            "ref": "0c47913c3bd0ddb01d6a9fcebf336ecfea076d92"
+        },
+        "files": [
+            "config/packages/broadway_event_store_mongodb.yaml"
+        ]
+    },
     "broadway/uuid-generator": {
         "version": "0.4.0"
+    },
+    "mongodb/mongodb": {
+        "version": "1.5.1"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -28,6 +43,9 @@
     },
     "psr/log": {
         "version": "1.1.2"
+    },
+    "ramsey/uuid": {
+        "version": "3.8.0"
     },
     "symfony/cache": {
         "version": "v4.4.0"

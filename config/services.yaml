@@ -4,6 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    mongodb_uri: '%env(BROADWAY_EVENT_STORE_MONGODB_URI)%'
+    mongodb_database: '%env(BROADWAY_EVENT_STORE_MONGODB_DATABASE)%'
 
 services:
     # default configuration for services in *this* file
@@ -23,5 +25,14 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+
+    Broadway\CommandHandling\CommandBus: '@broadway.command_handling.simple_command_bus'
+    Broadway\EventHandling\EventBus: '@broadway.event_handling.event_bus'
+    App\Account\Domain\AccountRepository: '@App\Account\Infrastructure\MongoDbAccountRepository'
+
+    App\Account\Application\AccountCommandHandler:
+        tags:
+            - { name: broadway.command_handler }
+
+    Broadway\EventStore\EventStore: '@broadway.event_store.mongodb'
+

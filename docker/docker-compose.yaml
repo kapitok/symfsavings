@@ -5,8 +5,10 @@ services:
         ports:
             - '9002:9000'
         volumes:
-            - ../:/var/www/symfony:cached
-            - ./logs/symfony:/var/www/symfony/var/logs:cached
+            - ../:/var/www/symfony
+            - ./logs/symfony:/var/www/symfony/var/logs
+        links:
+          - mongodb
     nginx:
         build: nginx
         ports:
@@ -17,3 +19,7 @@ services:
             - php
         volumes:
             - ./logs/nginx/:/var/log/nginx:cached
+    mongodb:
+        image: mongo:3
+        ports:
+          - "27018:27017"

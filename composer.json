@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "broadway/broadway-bundle": "^0.4.2",
         "broadway/event-store-mongodb": "^0.3.0",
+        "broadway/read-model-elasticsearch": "^0.3.0",
         "ramsey/uuid": "^3.8",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",

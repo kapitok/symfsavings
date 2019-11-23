@@ -6,6 +6,7 @@
 parameters:
     mongodb_uri: '%env(BROADWAY_EVENT_STORE_MONGODB_URI)%'
     mongodb_database: '%env(BROADWAY_EVENT_STORE_MONGODB_DATABASE)%'
+    elasticsearch: '~'
 
 services:
     # default configuration for services in *this* file

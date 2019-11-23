@@ -29,8 +29,29 @@
             "config/packages/broadway_event_store_mongodb.yaml"
         ]
     },
+    "broadway/read-model-elasticsearch": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.3",
+            "ref": "9afaea6bf879d010ff3d10395e2e21e02388462c"
+        },
+        "files": [
+            "config/packages/broadway_read_model_elasticsearch.yaml"
+        ]
+    },
     "broadway/uuid-generator": {
         "version": "0.4.0"
+    },
+    "elasticsearch/elasticsearch": {
+        "version": "v5.5.0"
+    },
+    "guzzlehttp/ringphp": {
+        "version": "1.1.1"
+    },
+    "guzzlehttp/streams": {
+        "version": "3.0.0"
     },
     "mongodb/mongodb": {
         "version": "1.5.1"
@@ -46,6 +67,9 @@
     },
     "ramsey/uuid": {
         "version": "3.8.0"
+    },
+    "react/promise": {
+        "version": "v2.7.1"
     },
     "symfony/cache": {
         "version": "v4.4.0"

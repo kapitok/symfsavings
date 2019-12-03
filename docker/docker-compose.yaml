@@ -9,6 +9,7 @@ services:
             - ./logs/symfony:/var/www/symfony/var/logs
         links:
           - mongodb
+          - elk
     nginx:
         build: nginx
         ports:
@@ -23,3 +24,7 @@ services:
         image: mongo:3
         ports:
           - "27018:27017"
+    elk:
+        image: elasticsearch:5-alpine
+        ports:
+          - "9300:9200"

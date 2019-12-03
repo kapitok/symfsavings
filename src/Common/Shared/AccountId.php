@@ -22,6 +22,11 @@ final class AccountId
         return new self(UUID::random());
     }
 
+    public static function fromString(string $id): self
+    {
+        return new self(new UUID($id));
+    }
+
     public function isEqual(self $id): bool
     {
         return $this->id->isEqual($id->id);

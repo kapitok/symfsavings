@@ -22,7 +22,7 @@ class AccountCommandHandler extends SimpleCommandHandler
 
     public function handleCreateNewAccountCommand(CreateNewAccountCommand $command): void
     {
-        $this->repository->createNew(Account::create(
+        $this->repository->save(Account::create(
             new AccountId($command->getId()),
             $command->getName(),
             new Currency()
@@ -32,7 +32,7 @@ class AccountCommandHandler extends SimpleCommandHandler
     public function handleDepositFundsCommand(DepositFundsCommand $command): void
     {
         /** @var Account $account */
-        $account = $this->repository->getById($command->getAccountId());
+        $account = $this->repository->load($command->getAccountId());
 
         if (null === $account) {
             Result::failure(sprintf('Account %s does not exists', $command->getAccountId()));
@@ -50,7 +50,7 @@ class AccountCommandHandler extends SimpleCommandHandler
     public function handleWithdrawFundsCommand(WithdrawFundsCommand $command): void
     {
         /** @var Account $account */
-        $account = $this->repository->getById($command->getAccountId());
+        $account = $this->repository->load($command->getAccountId());
 
         if (null === $account) {
             Result::failure(sprintf('Account %s does not exists', $command->getAccountId()));

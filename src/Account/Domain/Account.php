@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Account\Domain;
 
@@ -52,7 +53,7 @@ class Account extends EventSourcedAggregateRoot
      */
     public function getAggregateRootId(): string
     {
-        return $this->accountId->__toString();
+        return  (string) $this->accountId;
     }
 
     public function addFunds(float $amount): Result

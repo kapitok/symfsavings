@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Account\Domain;
 
-use Broadway\EventSourcing\EventSourcedAggregateRoot;
+use Broadway\Domain\AggregateRoot;
 
 interface AccountRepository
 {
-    public function createNew(Account $account): Account;
-    public function save(Account $account): Account;
-    public function getById($id): ?EventSourcedAggregateRoot;
+    public function save(AggregateRoot $account): void;
+    public function load($id): ?AggregateRoot;
 }

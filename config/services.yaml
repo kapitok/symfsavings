@@ -6,7 +6,9 @@
 parameters:
     mongodb_uri: '%env(BROADWAY_EVENT_STORE_MONGODB_URI)%'
     mongodb_database: '%env(BROADWAY_EVENT_STORE_MONGODB_DATABASE)%'
-    elasticsearch: '~'
+    elasticsearch:
+        hosts:
+            - elk:9200
 
 services:
     # default configuration for services in *this* file
@@ -26,14 +28,36 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-
+    # cqrs
     Broadway\CommandHandling\CommandBus: '@broadway.command_handling.simple_command_bus'
-    Broadway\EventHandling\EventBus: '@broadway.event_handling.event_bus'
-    App\Account\Domain\AccountRepository: '@App\Account\Infrastructure\MongoDbAccountRepository'
 
+    # command handlers
     App\Account\Application\AccountCommandHandler:
         tags:
             - { name: broadway.command_handler }
 
+    # event sourcing
+    Broadway\EventHandling\EventBus: '@broadway.event_handling.event_bus'
     Broadway\EventStore\EventStore: '@broadway.event_store.mongodb'
+    App\Account\Domain\AccountRepository: '@App\Account\Infrastructure\AccountEventStoreRepository'
 
+    # projectors
+    App\Account\Domain\ReadModel\AccountDetailsProjector:
+        arguments:
+            $accountDetailsRepository: '@App\Account\Domain\ReadModel\AccountDetailsRepository'
+        tags: [ broadway.domain.event_listener ]
+
+    # read model repository
+    App\Account\Domain\ReadModel\AccountDetailsRepository:
+        class: 'Broadway\ReadModel\ReadModel'
+        factory: ['@broadway.read_model.elasticsearch.repository_factory', create]
+        arguments:
+            - 'symfsavings.account_details'
+            - 'App\Account\Domain\ReadModel\AccountDetails'
+
+    App\RestApi\TestCommand:
+        arguments:
+            - '@Broadway\CommandHandling\CommandBus'
+            - '@App\Account\Domain\ReadModel\AccountDetailsRepository'
+        tags:
+            - { name: 'console.command', command: 'app:create-account' }

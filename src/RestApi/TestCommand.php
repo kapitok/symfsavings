@@ -52,7 +52,7 @@ class TestCommand extends Command
         $this->commandBus->dispatch(
             new CreateNewAccountCommand(
                 $workCopyOfUuid,
-                'MyFirstAccount 3',
+                'MyFirstAccount 9',
                 'pln'
             )
         );
@@ -74,6 +74,8 @@ class TestCommand extends Command
         $this->showAccountInfo('after deposit 100', $workCopyOfUuid, $output);
 
         $output->writeln('finish');
+
+        return 0;
     }
 
     protected function showAccountInfo(string $action, $accountId, OutputInterface $output)
@@ -82,7 +84,7 @@ class TestCommand extends Command
         $readModel = $this->repo->find($accountId);
 
         $output->writeln(str_repeat('---', 50));
-        $output->writeln([$action, $readModel->getName(), $readModel->getCurrency(), $readModel->getBalance()]);
+        $output->writeln([$action, $readModel->getId(), $readModel->getName(), $readModel->getCurrency(), $readModel->getBalance()]);
         $output->writeln(str_repeat('---', 50));
     }
 }

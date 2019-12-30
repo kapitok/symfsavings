@@ -1,0 +1,17 @@
+Account:
+  type: object
+  config:
+    description: "An account"
+    fields:
+      id:
+        type: "String!"
+        description: "The unique ID of the account."
+      name:
+        type: "String"
+        description: "Name of the account"
+      currency:
+        type: "String"
+        description: "Currency of the account"
+      balance:
+        type: "Float"
+        description: "Balance of the account"

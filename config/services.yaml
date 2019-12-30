@@ -61,3 +61,8 @@ services:
             - '@App\Account\Domain\ReadModel\AccountDetailsRepository'
         tags:
             - { name: 'console.command', command: 'app:create-account' }
+
+    App\RestApi\Graphql\Resolver\AccountResolver:
+        arguments:
+            - '@App\Account\Domain\ReadModel\AccountDetailsRepository'
+

@@ -1,0 +1,26 @@
+Mutation:
+    type: object
+    config:
+      fields:
+        Account:
+          type: AccountPayload!
+          resolve: "@=mutation('createAccount', [args])"
+          args:
+            input:
+              type: AccountInput!
+
+AccountPayload:
+  type: object
+  config:
+    fields:
+      name:
+        type: "String"
+
+AccountInput:
+  type: input-object
+  config:
+    fields:
+      name:
+        type: "String!"
+      currency:
+        type: "String!"

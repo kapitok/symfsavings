@@ -8,7 +8,7 @@ parameters:
     mongodb_database: '%env(BROADWAY_EVENT_STORE_MONGODB_DATABASE)%'
     elasticsearch:
         hosts:
-            - elk:9200
+            - elasticsearch:9200
 
 services:
     # default configuration for services in *this* file
@@ -52,7 +52,7 @@ services:
         class: 'Broadway\ReadModel\ReadModel'
         factory: ['@broadway.read_model.elasticsearch.repository_factory', create]
         arguments:
-            - 'symfsavings.account_details'
+            - 'account_details'
             - 'App\Account\Domain\ReadModel\AccountDetails'
 
     App\RestApi\TestCommand:
@@ -65,4 +65,9 @@ services:
     App\RestApi\Graphql\Resolver\AccountResolver:
         arguments:
             - '@App\Account\Domain\ReadModel\AccountDetailsRepository'
+
+    App\RestApi\Graphql\Mutation\AccountMutation:
+            arguments:
+                - '@Broadway\CommandHandling\CommandBus'
+                - '@App\Account\Domain\ReadModel\AccountDetailsRepository'
 

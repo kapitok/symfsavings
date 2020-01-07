@@ -2,7 +2,7 @@ Mutation:
     type: object
     config:
       fields:
-        Account:
+        createAccount:
           type: AccountPayload!
           resolve: "@=mutation('createAccount', [args])"
           args:
@@ -13,14 +13,20 @@ AccountPayload:
   type: object
   config:
     fields:
+      id:
+        type: "String!"
       name:
-        type: "String"
+        type: "String!"
+      currency:
+        type: "String!"
 
 AccountInput:
   type: input-object
   config:
     fields:
-      name:
+      accountName:
         type: "String!"
-      currency:
+        description: "Name of the account"
+      accountCurrency:
         type: "String!"
+        description: "Currency of the account"

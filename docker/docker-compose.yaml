@@ -9,7 +9,7 @@ services:
             - ./logs/symfony:/var/www/symfony/var/logs
         links:
           - mongodb
-          - elk
+          - elasticsearch
     nginx:
         build: nginx
         ports:
@@ -24,7 +24,13 @@ services:
         image: mongo:3
         ports:
           - "27018:27017"
-    elk:
-        image: elasticsearch:5-alpine
-        ports:
-          - "9300:9200"
+    elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch:7.0.0
+      environment:
+        - discovery.type=single-node
+      ports:
+        - 9200:9200
+    kibana:
+      image: docker.elastic.co/kibana/kibana:7.0.0
+      ports:
+        - 5601:5601

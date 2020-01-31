@@ -24,4 +24,4 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-/docker/logs/
+docker/logs/

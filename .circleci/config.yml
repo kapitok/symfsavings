@@ -2,15 +2,15 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.2-node-browsers
+      - image: php:7.2-fpm
 
     steps:
       - checkout
 
-      - run: sudo apt update
-      - run: sudo docker-php-ext-install zip
-      - run: sudo pecl install mongodb
-#      - run: sudo echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
+      - run: apt update
+      - run: docker-php-ext-install zip
+      - run: pecl install mongodb
+      - run: echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
 
       # Download and cache dependencies
       - restore_cache:

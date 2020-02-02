@@ -31,6 +31,6 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-      - run: cd $CIRCLE_WORKING_DIRECTORY
+#      - run: cd $CIRCLE_WORKING_DIRECTORY
       - run: composer phpunit
       - run: composer phpcs

@@ -14,6 +14,7 @@ jobs:
 #            && docker-php-ext-install zip xml
       - run: pecl install mongodb
       - run: echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
+      - run: curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
 
       # Download and cache dependencies
       - restore_cache:

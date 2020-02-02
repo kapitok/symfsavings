@@ -12,7 +12,7 @@ jobs:
 #            && docker-php-ext-configure intl \
 #            && docker-php-ext-install intl \
 #            && docker-php-ext-install zip xml
-      - run: apt-get install git
+      - run: apt-get install git -y
       - run: pecl install mongodb
       - run: echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
       - run: curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer

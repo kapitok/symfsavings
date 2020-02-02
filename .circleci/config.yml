@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: php:7.2-fpm
+      - image: circleci/php:7.2-node-browsers
 
     steps:
       - checkout

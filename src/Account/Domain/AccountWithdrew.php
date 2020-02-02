@@ -8,6 +8,11 @@ use App\Common\Ddd\UUID;
 use App\Common\Shared\AccountId;
 use Broadway\Serializer\Serializable;
 
+/**
+ * Class AccountWithdrew
+ *
+ * @package App\Account\Domain
+ */
 class AccountWithdrew implements DomainEvent, Serializable
 {
     private $accountId;

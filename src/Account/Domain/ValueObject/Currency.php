@@ -2,6 +2,11 @@
 
 namespace App\Account\Domain\ValueObject;
 
+/**
+ * Class Currency
+ *
+ * @package App\Account\Domain\ValueObject
+ */
 class Currency
 {
     /**

@@ -9,6 +9,11 @@ use App\Common\Ddd\UUID;
 use App\Common\Shared\AccountId;
 use Broadway\Serializer\Serializable;
 
+/**
+ * Class AccountCreated
+ *
+ * @package App\Account\Domain
+ */
 class AccountCreated implements DomainEvent, Serializable
 {
     /**

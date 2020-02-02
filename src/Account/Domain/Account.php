@@ -8,6 +8,11 @@ use App\Common\Ddd\Result;
 use App\Common\Shared\AccountId;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 
+/**
+ * Class Account
+ *
+ * @package App\Account\Domain
+ */
 class Account extends EventSourcedAggregateRoot
 {
     protected $accountId;

@@ -8,6 +8,11 @@ use App\Common\Ddd\UUID;
 use App\Common\Shared\AccountId;
 use Broadway\Serializer\Serializable;
 
+/**
+ * Class AccountDeposited
+ *
+ * @package App\Account\Domain
+ */
 class AccountDeposited implements DomainEvent, Serializable
 {
     private $accountId;

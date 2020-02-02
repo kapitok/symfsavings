@@ -1,3 +1,5 @@
+[![mlozynskyy](https://circleci.com/gh/mlozynskyy/symfsavings.svg?style=svg)](https://app.circleci.com/jobs/github/mlozynskyy/symfsavings/21)
+
 MongoDB commands:
 
 ```sql

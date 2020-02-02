@@ -10,7 +10,7 @@ jobs:
       - run: sudo apt update
       - run: sudo docker-php-ext-install zip
       - run: sudo pecl install mongodb
-      - run: echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
+      - run: sudo echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
 
       # Download and cache dependencies
       - restore_cache:

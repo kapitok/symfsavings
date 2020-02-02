@@ -32,6 +32,4 @@ jobs:
           paths:
             - ./vendor
       - run: ls -a
-      - run: php vendor/bin/phpunit --colors
-      - run: composer phpunit
-      - run: composer phpcs
+      - run: composer test

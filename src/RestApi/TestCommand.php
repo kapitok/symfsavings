@@ -84,7 +84,13 @@ class TestCommand extends Command
         $readModel = $this->repo->find($accountId);
 
         $output->writeln(str_repeat('---', 50));
-        $output->writeln([$action, $readModel->getId(), $readModel->getName(), $readModel->getCurrency(), $readModel->getBalance()]);
+        $output->writeln([
+                $action,
+                $readModel->getId(),
+                $readModel->getName(),
+                $readModel->getCurrency(),
+                $readModel->getBalance()
+        ]);
         $output->writeln(str_repeat('---', 50));
     }
 }

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Account\Domain\ReadModel;
 
-
 use App\Account\Domain\ValueObject\Currency;
 use App\Common\Shared\AccountId;
 use Broadway\ReadModel\SerializableReadModel;

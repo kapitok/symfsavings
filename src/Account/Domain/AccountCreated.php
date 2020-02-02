@@ -43,7 +43,7 @@ class AccountCreated implements DomainEvent, Serializable
 
     public static function new(AccountId $accountId, string $name, Currency $currency, \DateTimeImmutable $when): self
     {
-        return new self($accountId, $name, $currency,  $when);
+        return new self($accountId, $name, $currency, $when);
     }
 
     public function eventId(): UUID

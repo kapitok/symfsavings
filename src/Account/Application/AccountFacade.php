@@ -41,9 +41,11 @@ class AccountFacade
         return $this->repo->find($workCopyOfUuid);
     }
 
-    public function depositAccount() {}
+    public function depositAccount(): void
+    {
+    }
 
-    public function withdrawAccount() {}
-
-
+    public function withdrawAccount(): void
+    {
+    }
 }

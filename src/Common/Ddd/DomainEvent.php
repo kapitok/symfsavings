@@ -6,4 +6,3 @@ interface DomainEvent
 {
     public function eventId(): UUID;
 }
-

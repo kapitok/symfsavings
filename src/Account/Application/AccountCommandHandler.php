@@ -34,7 +34,7 @@ class AccountCommandHandler extends SimpleCommandHandler
         /** @var Account $account */
         $account = $this->repository->load($command->getAccountId());
 
-        if (null === $account) {
+        if (!$account instanceof Account) {
             Result::failure(sprintf('Account %s does not exists', $command->getAccountId()));
         }
 
@@ -52,7 +52,7 @@ class AccountCommandHandler extends SimpleCommandHandler
         /** @var Account $account */
         $account = $this->repository->load($command->getAccountId());
 
-        if (null === $account) {
+        if (!$account instanceof Account) {
             Result::failure(sprintf('Account %s does not exists', $command->getAccountId()));
         }
 

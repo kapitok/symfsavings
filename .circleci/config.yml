@@ -2,13 +2,22 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1-node-browsers
+      - image: php:7.2-fpm
 
     steps:
       - checkout
 
       - run: sudo apt update
       - run: sudo docker-php-ext-install zip
+      - run: apt-get install -y zlib1g-dev libpq-dev git libicu-dev libxml2-dev \
+            && docker-php-ext-configure intl \
+            && docker-php-ext-install intl \
+            && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+            && docker-php-ext-install pdo pdo_pgsql pgsql \
+            && docker-php-ext-install zip xml
+
+      - run: pecl install mongodb
+      - run: echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
 
       # Download and cache dependencies
       - restore_cache:
